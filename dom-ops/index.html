@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script type="application/javascript">
+    window.addEventListener('DOMContentLoaded', () => {
+      let time = performance.now();
+
+      /** ---начало измеряемого кода--- **/
+
+      /**
+       * Количество добавляемых элементов
+       * @type {number} 
+       */
+      const countNewElements = 1000;
+
+       /**
+       * Количество удаляемых элементов
+       * @type {number} 
+       */
+      const countDeletedElements = 200;
+
+      insertAdjacentElements(countNewElements);
+      // appendElements(countNewElements);
+      // insertAllElements(countNewElements);
+      removeRandomElements(countDeletedElements);
+
+      /** ---конец измеряемого кода--- **/
+
+      time = performance.now() - time;
+      console.log('Время выполнения = ', time);
+    });
+
+    /**
+     * Добавляет html элементы в DOM из строки
+     * 
+     * @param {number} countNewElements - количество добавляемых элементов
+     * @returns {void}
+     */
+    function insertAdjacentElements(countNewElements) {
+      const body = document.body;
+      let div = '';
+
+      for (let i = 0; i < countNewElements; i++) {
+        div = `<div id="div-${i}">div #${i}</div>`;
+
+        if (i % 2) {
+          body.insertAdjacentHTML('afterbegin', div); // вставляем в начало списка
+        } else {
+          body.insertAdjacentHTML('beforeend', div); // вставляем в конец списка
+        }
+      }
+    }
+
+    /**
+     * Добавляет html элементы в DOM по отдельности
+     * 
+     * @param {number} countNewElements - количество добавляемых элементов
+     * @returns {void}
+     */
+    function appendElements(countNewElements) {
+      const body = document.body;
+
+      for (let i = 0; i < countNewElements; i++) {
+        const div = document.createElement('div');
+
+        div.id = `div-${i}`;
+        div.innerHTML = `div #${i}`;
+
+        if (i % 2) {
+          body.prepend(div); // вставляем в начало списка
+        } else {
+          body.append(div); // вставляем в конец списка
+        } 
+      }
+    }
+
+    /**
+     * Добавляет все html элементы в DOM за раз из строки
+     * 
+     * @param {number} countNewElements - количество добавляемых элементов
+     * @returns {void}
+     */
+    function insertAllElements(countNewElements) {
+      let resultDiv = '';
+      let newDiv = '';
+
+      for (let i = 0; i < countNewElements; i++) {
+        newDiv = `<div id="div-${i}">div #${i}</div>`;
+
+        if (i % 2) {
+          resultDiv = newDiv + resultDiv; // вставляем в начало списка
+        } else {
+          resultDiv = resultDiv + newDiv; // вставляем в конец списка
+        }
+      }
+
+      document.body.insertAdjacentHTML('beforeend', resultDiv);
+    }
+
+    /**
+     * Удаляет рандомные элементы из DOM
+     *
+     * @param {number} countDeletedElements - количество удаляемых элементовв
+     * @returns {void}
+     */
+    function removeRandomElements(countDeletedElements) {
+      const children = document.body.children;
+
+      for (let i = 0; i < countDeletedElements; i++) {
+        const randomPosition = Math.floor(Math.random() * children.length);
+
+        children[randomPosition].remove();
+      }
+    }
+  </script>
+
+  <style>
+    div:nth-child(3n) {
+      color: red;
+    }
+  </style>
+</head>
+<body></body>
+</html>
