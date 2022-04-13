@@ -13,6 +13,10 @@ colors = {
 }
 
 .notes
+  --note-v-indent: 5px
+  --note-h-indent: 20px
+  --note-indent-between-elements: 5px
+
   display: flex
   overflow: auto
   white-space: nowrap
@@ -21,15 +25,15 @@ colors = {
     width: 0
 
   &__item
-    display inline-block
-    padding 5px 20px
+    display: inline-block
+    padding: var(--note-v-indent) var(--note-h-indent)
     border-radius: var(--border-radius)
     color: var(--white-color)
     font-weight: var(--subtitle-weight)
     font-size: var(--subtitle-size)
 
     & + .notes__item
-      margin-left: 5px
+      margin-left: var(--note-indent-between-elements)
 
     for k, v in colors
       &--{k}

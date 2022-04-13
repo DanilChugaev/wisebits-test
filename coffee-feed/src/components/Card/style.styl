@@ -27,14 +27,14 @@
 
   &__img-container
     display: flex
-    background: #58a
+    background: var(--img-placeholder-color)
     background-image: repeating-linear-gradient(30deg,
                     hsla(0,0%,100%,.1),
                     hsla(0,0%,100%,.1) 15px,
                     transparent 0, transparent 30px)
 
   &__content
-    padding var(--v-indent) var(--h-indent)
+    padding: var(--v-indent) var(--h-indent)
     
   &__origin
     font-size: var(--subtitle-size)
@@ -42,7 +42,7 @@
 
   &__blend-name
     font-size: var(--title-size)
-    font-weight: 700
+    font-weight: var(--title-weight)
 
   &__variety
     font-size: var(--subtitle-size)

@@ -7,6 +7,7 @@
   --subtitle-color: #768898
   --main-bg-color: #eff3f8
   --button-shadow-color: rgba(24, 24, 24, 0.4)
+  --img-placeholder-color: #58a
 
   // размеры
   --full-size: 100%
@@ -23,7 +24,10 @@
 
   // разное
   --border-radius: 6px
+  --title-weight: 700
   --subtitle-weight: 300
+  --top-elements-z-index: 10
+  --animation-duration: 0.2s
 
 *,
 *::before,
@@ -35,12 +39,12 @@
 
 html,
 body
-  height: 100%
+  height: var(--full-size)
   background-color: var(--main-bg-color)
   color: var(--text-color)
 
 .app
-  display flex
+  display: flex
   flex-direction: column
 
   &__title
@@ -49,7 +53,7 @@ body
     position: sticky
     top: 0
     background-color: var(--main-bg-color)
-    z-index: 10
+    z-index: var(--top-elements-z-index)
 
   &__card-container
     display: grid
@@ -63,6 +67,7 @@ body
 
     position: sticky
     bottom: var(--main-indent)
+    z-index: var(--top-elements-z-index)
     border: none
     background-color: var(--bg-color)
     color: var(--white-color)
@@ -71,7 +76,7 @@ body
     font-size: var(--title-size)
     cursor: pointer
     margin: var(--main-indent) auto
-    transition: background-color 0.2s, box-shadow 0.2s
+    transition: background-color var(--animation-duration), box-shadow var(--animation-duration)
     box-shadow: 0 3px 5px 0 var(--button-shadow-color)
     overflow: hidden
 
