@@ -4,7 +4,6 @@ import { terser } from 'rollup-plugin-terser';
 import clear from 'rollup-plugin-clear';
 import { visualizer } from 'rollup-plugin-visualizer';
 import postcss from 'rollup-plugin-postcss';
-import consts from 'rollup-plugin-consts';
 import copy from 'rollup-plugin-copy';
 import autoprefixer from 'autoprefixer';
 
@@ -16,11 +15,6 @@ export default [
   clear({
     targets: [ DIST_DIR ],
     watch: true,
-  }),
-
-  /** define global application constants */
-  consts({
-    IS_DEV_MODE: isDev,
   }),
 
   /** passing applications through the typescript compiler */
