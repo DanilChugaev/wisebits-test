@@ -30,6 +30,8 @@ function setButtonIsLoading(isLoading: boolean): void {
   } else {
     (addButton as HTMLButtonElement).classList.remove('app__button--is-loading');
   }
+
+  (addButton as HTMLButtonElement).disabled = isLoading;
 }
 
 /**
