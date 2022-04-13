@@ -19,15 +19,15 @@ const coffeeData: CoffeeData = {
   intensifier: 'dirty',
 };
 
-let card: ICard;
+let cardInstance: ICard;
 
 describe('Card', () => {
   beforeEach(() => {
-    card = new Card(notesInstance);
+    cardInstance = new Card(notesInstance);
   });
 
   test('should get card component', () => {
-    expect(card.getComponent(coffeeData)).toEqual(`
+    expect(cardInstance.getComponent(coffeeData)).toEqual(`
       <div class="card" id="1084" uid="271cfcc2-f358-4f2f-8559-b4015d0a7d68">
         <div class="card__img-container">
           <span class="card__intensifier">dirty</span>
