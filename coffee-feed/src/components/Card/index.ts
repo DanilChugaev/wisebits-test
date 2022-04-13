@@ -16,10 +16,12 @@ export default class Card implements ICard {
   }: CoffeeData): string {
     return `
       <div class="card" id="${id}" uid="${uid}">
-        <span class="card__intensifier">${intensifier}</span>
+        <div class="card__img-container">
+          <span class="card__intensifier">${intensifier}</span>
 
-        <img class="card__img" src="https://loremflickr.com/500/500/coffee%20bean" alt="Изображение кофе">
-        
+          <img class="card__img" loading="lazy" src="https://loremflickr.com/500/500/coffee%20bean?id=${id}" alt="Изображение кофе">
+        </div>
+
         <div class="card__content">
           <div class="card__origin" title="${origin}">${origin}</div>
           <div class="card__blend-name" title="${blend_name}">${blend_name}</div>
