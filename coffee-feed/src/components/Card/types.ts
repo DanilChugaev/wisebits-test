@@ -1,6 +1,10 @@
+import { CoffeeData } from '../../services/types';
+
 export interface ICard {
   /**
    * Возвращает готовый компонент карточки
+   *
+   * @param cardData - сорт кофе
    */
-  getComponent(title: string): string;
+  getComponent(cardData: CoffeeData): string;
 }

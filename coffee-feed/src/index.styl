@@ -59,10 +59,12 @@ body
     padding: var(--main-indent)
 
   &__button
+    --bg-color: var(--red-color)
+
     position: sticky
     bottom: var(--main-indent)
     border: none
-    background-color: var(--red-color)
+    background-color: var(--bg-color)
     color: var(--white-color)
     border-radius: var(--border-radius)
     padding: var(--v-indent) var(--h-indent)
@@ -71,15 +73,32 @@ body
     margin: var(--main-indent) auto
     transition: background-color 0.2s, box-shadow 0.2s
     box-shadow: 0 3px 5px 0 var(--button-shadow-color)
-        
+    overflow: hidden
 
     &:hover
-      --red-color: #f48994
+      --bg-color: #f48994
       box-shadow: 0 4px 7px 0 var(--button-shadow-color)
     
     &:active
-      --red-color: #f56372
+      --bg-color: #f56372
       box-shadow: 0 2px 4px 0 var(--button-shadow-color)
+
+    &--is-loading
+      --bg-color: #6b5e5f
+
+      transition: none
+
+      &:hover
+        --bg-color: #6b5e5f
+
+      &::before
+        content: 'загрузка...'
+        position: absolute
+        top: var(--v-indent)
+        bottom: var(--v-indent)
+        left: 0
+        right: 0
+        background-color: var(--bg-color)
 
 @import './components/Card/style';
 @import './components/Notes/style';

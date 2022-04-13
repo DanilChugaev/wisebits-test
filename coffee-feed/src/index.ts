@@ -1,24 +1,48 @@
 import Card from './components/Card/index';
 import { ICard } from './components/Card/types';
+import { getNewCardsInfo } from './services/requests';
+import { CoffeeData } from './services/types';
+
 import './index.styl';
 
 const card: ICard = new Card();
+
 let cardContainer: HTMLElement | null;
 let addButton: HTMLElement | null;
 
 /**
  * Вставляет новую карточку в контейнер
+ *
+ * @param cardData - новый сорт кофе
  */
-function insertNewCardIntoContainer(): void {
-  (cardContainer as HTMLDivElement).insertAdjacentHTML('beforeend', card.getComponent('новый компонент'));
+function insertNewCardIntoContainer(cardData: CoffeeData): void {
+  (cardContainer as HTMLDivElement).insertAdjacentHTML('beforeend', card.getComponent(cardData));
+}
+
+/**
+ * Вставляет новую карточку в контейнер
+ *
+ * @param isLoading - состояние загрузки
+ */
+function setButtonIsLoading(isLoading: boolean): void {
+  if (isLoading) {
+    (addButton as HTMLButtonElement).classList.add('app__button--is-loading');
+  } else {
+    (addButton as HTMLButtonElement).classList.remove('app__button--is-loading');
+  }
 }
 
 /**
  * Получает новую карточку с сервера и вставляет в контейнер
  */
-function getNewCard(): void {
-  // тут делать запрос
-  insertNewCardIntoContainer();
+async function getNewCard(): Promise<void> {
+  setButtonIsLoading(true);
+
+  const cardData = await getNewCardsInfo();
+
+  insertNewCardIntoContainer(cardData);
+
+  setButtonIsLoading(false);
 }
 
 /**

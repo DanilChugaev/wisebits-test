@@ -1,4 +1,5 @@
 import { ICard } from './types';
+import { CoffeeData } from '../../services/types';
 
 /**
  * Класс описывает основной компонент карточки
@@ -7,19 +8,22 @@ export default class Card implements ICard {
   /**
    * Возвращает готовый компонент карточки
    *
-   * @param title - заголовок карточки
+   * @param cardData - сорт кофе
    */
-  public getComponent(title: string): string {
+  public getComponent({
+    // eslint-disable-next-line
+    id, uid, intensifier, origin, blend_name, variety,
+  }: CoffeeData): string {
     return `
-      <div class="card" id="3417" uid="9c772363-8362-48a2-b871-cdbbea018b86">
-        <span class="card__intensifier">${title}</span>
+      <div class="card" id="${id}" uid="${uid}">
+        <span class="card__intensifier">${intensifier}</span>
 
         <img class="card__img" src="https://loremflickr.com/500/500/coffee%20bean" alt="Изображение кофе">
         
         <div class="card__content">
-          <div class="card__origin" title="Chiriqui, Panama">Chiriqui, Panama Chiriqui, Panama Chiriqui, Panama Chiriqui, Panama</div>
-          <div class="card__blend-name" title="Blue Enlightenment">Blue Enlightenment Blue Enlightenment Blue Enlightenment Blue Enlightenment</div>
-          <div class="card__variety" title="Ethiopian Heirloom">Ethiopian Heirloom Ethiopian Heirloom Ethiopian Heirloom</div>
+          <div class="card__origin" title="${origin}">${origin}</div>
+          <div class="card__blend-name" title="${blend_name}">${blend_name}</div>
+          <div class="card__variety" title="${variety}">${variety}</div>
 
           <div class="card__notes notes">
             <span class="notes__item notes__item--1">crisp</span>
