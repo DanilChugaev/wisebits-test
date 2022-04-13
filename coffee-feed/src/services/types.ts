@@ -13,8 +13,6 @@ export type CoffeeData = {
 };
 
 /**
- * Список доступный урлов для запросов данных
+ * Урлов для получение нового сорта кофе
  */
-export enum URLS {
-  CoffeeSorts = 'https://random-data-api.com/api/coffee/random_coffee',
-}
+export const COFFEE_SORTS_URL = 'https://random-data-api.com/api/coffee/random_coffee';

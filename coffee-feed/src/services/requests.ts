@@ -1,4 +1,4 @@
-import { CoffeeData, URLS } from './types';
+import { CoffeeData, COFFEE_SORTS_URL } from './types';
 
 /**
  * Базовый метод запросов
@@ -13,7 +13,7 @@ export function getRequest(url: string): Promise<any> {
  * Получение данных карточек
  */
 export async function getNewCardsInfo(): Promise<CoffeeData> {
-  const response = await getRequest(URLS.CoffeeSorts);
+  const response = await getRequest(COFFEE_SORTS_URL);
 
   return response.json();
 }
