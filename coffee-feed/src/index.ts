@@ -1,21 +1,14 @@
-import IS_DEV_MODE from 'consts:IS_DEV_MODE';
+import Card from './components/Card/index';
 
-import Foo from './modules/Foo';
+const card = new Card();
 
-if (IS_DEV_MODE) {
-  console.log('is dev');
+/**
+ * Стартует приложение после загрузки DOM
+ */
+function startApp(): void {
+  const cardContainer = document.getElementById('container');
+
+  (cardContainer as HTMLDivElement).insertAdjacentHTML('beforeend', card.getComponent('новый компонент'));
 }
 
-import './index.styl';
-
-new Foo();
-
-(async () => {
-  const module = await import('./modules/Dog')
-    .then(m => m.default);
-  const dog = new module;
-
-  dog.bark();
-})();
-
-console.log('test');
+window.addEventListener('DOMContentLoaded', startApp);
