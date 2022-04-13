@@ -1,10 +1,12 @@
 :root
   // цвета
   --white-color: #fdfdfd
-  --black-color: #191818
+  --black-color: rgb(25, 24, 24)
+  --red-color: #f67280
   --text-color: #495057
   --subtitle-color: #768898
   --main-bg-color: #eff3f8
+  --button-shadow-color: rgba(24, 24, 24, 0.4)
 
   // размеры
   --full-size: 100%
@@ -51,6 +53,26 @@ body
     grid-template-columns: repeat(auto-fit, minmax(var(--card-width-min), var(--card-width-max)))
     gap: var(--main-indent)
     padding: var(--main-indent)
+
+  &__button
+    border: none
+    background-color: var(--red-color)
+    color: var(--white-color)
+    border-radius: var(--border-radius)
+    padding: var(--v-indent) var(--h-indent)
+    font-size: var(--title-size)
+    cursor: pointer
+    margin: var(--main-indent) auto
+    transition: background-color 0.2s, box-shadow 0.2s
+    box-shadow: 0 3px 5px 0 var(--button-shadow-color)
+
+    &:hover
+      --red-color: #f48994
+      box-shadow: 0 4px 7px 0 var(--button-shadow-color)
+    
+    &:active
+      --red-color: #f56372
+      box-shadow: 0 2px 4px 0 var(--button-shadow-color)
 
 @import './components/Card/style';
 @import './components/Notes/style';
