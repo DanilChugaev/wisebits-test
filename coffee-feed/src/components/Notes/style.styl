@@ -1,0 +1,35 @@
+colors = {
+  '1': #b4573d,
+  '2': #cf7146,
+  '3': #f17922,
+  '4': #bca796,
+  '5': #b7ad9f,
+  '6': #ecbd7b,
+  '7': #edd98e,
+  '8': #aba56c,
+  '9': #90c2ba,
+  '10': #deb764,
+}
+
+.notes
+  display: flex
+  overflow: auto
+  white-space: nowrap
+  
+  &::-webkit-scrollbar
+    width: 0
+
+  &__item
+    display inline-block
+    padding 5px 20px
+    border-radius: var(--border-radius)
+    color: var(--white-color)
+    font-weight: var(--subtitle-weight)
+    font-size: var(--subtitle-size)
+
+    & + .notes__item
+      margin-left: 5px
+
+    for k, v in colors
+      &--{k}
+        background-color: v

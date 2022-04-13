@@ -1,0 +1,54 @@
+.card
+  display: block
+  flex-direction: column
+  position: relative
+  overflow: hidden
+  box-shadow:
+    0 2px 1px -1px rgb(0 0 0 / 20%),
+    0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 1px 3px 0 rgb(0 0 0 / 12%)
+  border-radius: var(--border-radius)
+  background-color: var(--white-color)
+
+  &__intensifier
+    position: absolute
+    top: var(--v-indent)
+    right: var(--h-indent)
+    color: var(--white-color)
+    font-size: var(--title-size)
+    font-weight: var(--subtitle-weight)
+    text-shadow: 0 1px 3px var(--black-color);
+
+  &__img
+    object-fit: cover
+    width: var(--full-size)
+    min-height: var(--img-height)
+    height: var(--img-height)
+
+  &__content
+    padding var(--v-indent) var(--h-indent)
+    
+  &__origin
+    font-size: var(--subtitle-size)
+    color: var(--subtitle-color)
+
+  &__blend-name
+    font-size: var(--title-size)
+    font-weight: 700
+
+  &__variety
+    font-size: var(--subtitle-size)
+
+  &__blend-name,
+  &__variety
+    margin-top: var(--v-indent)
+
+  &__notes
+    margin-top: calc(2 * var(--v-indent))
+
+  &__origin,
+  &__blend-name,
+  &__variety
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis

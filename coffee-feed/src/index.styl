@@ -1,3 +1,28 @@
+:root
+  // цвета
+  --white-color: #fdfdfd
+  --black-color: #191818
+  --text-color: #495057
+  --subtitle-color: #768898
+  --main-bg-color: #eff3f8
+
+  // размеры
+  --full-size: 100%
+  --title-size: 18px
+  --subtitle-size: 14px
+  --card-width-min: 200px
+  --card-width-max: 300px
+  --img-height: 200px
+
+  // отступы
+  --main-indent: 20px
+  --h-indent: 15px
+  --v-indent: 10px
+
+  // разное
+  --border-radius: 6px
+  --subtitle-weight: 300
+
 *,
 *::before,
 *::after
@@ -9,5 +34,23 @@
 html,
 body
   height: 100%
+  background-color: var(--main-bg-color)
+  color: var(--text-color)
 
-@import './components/Card/index.styl';
+.app
+  display flex
+  flex-direction: column
+
+  &__title
+    text-align: center
+    padding: var(--main-indent)
+
+  &__card-container
+    display: grid
+    justify-content: center
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-width-min), var(--card-width-max)))
+    gap: var(--main-indent)
+    padding: var(--main-indent)
+
+@import './components/Card/style';
+@import './components/Notes/style';

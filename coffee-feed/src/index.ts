@@ -1,4 +1,5 @@
 import Card from './components/Card/index';
+import './index.styl';
 
 const card = new Card();
 
