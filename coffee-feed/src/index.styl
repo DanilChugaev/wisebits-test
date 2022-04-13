@@ -46,6 +46,10 @@ body
   &__title
     text-align: center
     padding: var(--main-indent)
+    position: sticky
+    top: 0
+    background-color: var(--main-bg-color)
+    z-index: 10
 
   &__card-container
     display: grid
@@ -55,6 +59,8 @@ body
     padding: var(--main-indent)
 
   &__button
+    position: sticky
+    bottom: var(--main-indent)
     border: none
     background-color: var(--red-color)
     color: var(--white-color)
@@ -65,6 +71,7 @@ body
     margin: var(--main-indent) auto
     transition: background-color 0.2s, box-shadow 0.2s
     box-shadow: 0 3px 5px 0 var(--button-shadow-color)
+        
 
     &:hover
       --red-color: #f48994
