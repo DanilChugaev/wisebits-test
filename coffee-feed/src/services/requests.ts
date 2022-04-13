@@ -5,7 +5,7 @@ import { CoffeeData, COFFEE_SORTS_URL } from './types';
  *
  * @param url - адрес запроса
  */
-export function getRequest(url: string): Promise<any> {
+export function getRequest(url: string): Promise<Response> {
   return fetch(url);
 }
 
