@@ -1,11 +1,14 @@
 import Card from './components/Card/index';
+import Notes from './components/Notes/index';
 import { ICard } from './components/Card/types';
+import { INotes } from './components/Notes/types';
 import { getNewCardsInfo } from './services/requests';
 import { CoffeeData } from './services/types';
 
 import './index.styl';
 
-const card: ICard = new Card();
+const notes: INotes = new Notes();
+const card: ICard = new Card(notes);
 
 let cardContainer: HTMLElement | null;
 let addButton: HTMLElement | null;
