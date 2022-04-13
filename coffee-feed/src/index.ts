@@ -7,11 +7,14 @@ import { CoffeeData } from './services/types';
 
 import './index.styl';
 
+const INTERVAL_TIME = 30000;
+
 const notes: INotes = new Notes();
 const card: ICard = new Card(notes);
 
 let cardContainer: HTMLElement | null;
 let addButton: HTMLElement | null;
+let requestInterval: ReturnType<typeof setInterval>;
 
 /**
  * Вставляет новую карточку в контейнер
@@ -20,6 +23,7 @@ let addButton: HTMLElement | null;
  */
 function insertNewCardIntoContainer(cardData: CoffeeData): void {
   (cardContainer as HTMLDivElement).insertAdjacentHTML('beforeend', card.getComponent(cardData));
+  window.scrollTo(0, (cardContainer as HTMLDivElement).scrollHeight);
 }
 
 /**
@@ -38,9 +42,17 @@ function setButtonIsLoading(isLoading: boolean): void {
 }
 
 /**
+ * Обновляет интервал дял запроса новых данных
+ */
+function updateInterval(): void {
+  requestInterval = setInterval(getNewCard, INTERVAL_TIME);
+}
+
+/**
  * Получает новую карточку с сервера и вставляет в контейнер
  */
 async function getNewCard(): Promise<void> {
+  clearInterval(requestInterval);
   setButtonIsLoading(true);
 
   const cardData = await getNewCardsInfo();
@@ -48,6 +60,7 @@ async function getNewCard(): Promise<void> {
   insertNewCardIntoContainer(cardData);
 
   setButtonIsLoading(false);
+  updateInterval();
 }
 
 /**
